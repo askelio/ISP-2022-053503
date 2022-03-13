@@ -1,33 +1,35 @@
-import user_input as ui
 import task_logic as tl
 
 
 def main():
-    while True:
-        print("(1) Use K=10  M=4 | (2)Enter K and M ")
+    try:
+        text = tl.get_text('text')
 
-        try:
-            tmp = input()
-            tmp = int(tmp)
-            if tmp != 1 and tmp != 2:
-                raise Exception("Enter (1) or (2)")
-            else:
-                if tmp == 1:
-                    text = ui.i_text()
-                    tl.get_top_k(10, 4, text)
-                    break
-                else:
-                    k = ui.i_k()
-                    m = ui.i_m()
-                    text = ui.i_text()
-                    tl.get_top_k(k, m, text)
-                    break
-        except ValueError:
-            print("Incorrect value")
-            break
-        except Exception as e:
-            print(e)
-            break
+        print('The number of repeated words in the text: ')
+        for key, value in tl.rep_words(text).items():
+            print("{0}: {1}".format(key, value))
+
+        print()
+        print('Average number of words in a sentence: ',
+              tl.aw_words_count(text), '\n')
+
+        print('Median number of words in a sentence: ',
+              tl.median_words_number(text), '\n')
+
+        print('Enter M,K values (1) K=10 | M = 4   (2) Your onw values')
+        m = 4
+        k = 10
+        tmp = int(input('Enter the number: '))
+        if tmp == 2:
+            k = int(input('Enter K value: '))
+            m = int(input('Enter M value: '))
+
+        print()
+        print('Top K most frequently repeated letter N-grams: ')
+        tl.top_k_m(k, m, text)
+    except Exception as e:
+        print(e)
+        print('Restart the program to enter correct values')
 
 
 if __name__ == "__main__":
