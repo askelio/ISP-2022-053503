@@ -5,11 +5,11 @@ from SerializerFactory.Serializers.serializerFormat import SerializerFormat
 FLOAT_REGEX = "-?[\d]+\.[\d]+"
 INT_REGEX = "^-?[\d]+$"
 
+
 class SerializerYaml(SerializerFormat):
 
     @staticmethod
-    def dump(obj):
-
+    def dumps(obj):
         def dumps_complex(complex_obj, tabs=''):
             if len(complex_obj) == 0:
                 return '{}\n'
@@ -73,16 +73,20 @@ class SerializerYaml(SerializerFormat):
 
         return dumps_complex(obj)
 
-    def dumps(self):
-        pass
-
-    def load(self):
-        pass
+    @staticmethod
+    def dump(obj, file):
+        with open(file, 'w') as f:
+            f.write(SerializerYaml.dumps(obj))
 
     @staticmethod
-    def loads(string_obj, file):
+    def load(file):
+        with open(file, 'r') as f:
+            result = f.read()
+            return SerializerYaml.loads(result)
+
+    @staticmethod
+    def loads(string_obj):
         def find_last_index(str_obj, i, tab_counter):
-            flag = str()
             local_tabs_counter = 0
             temp_counter = i
             while True:
@@ -134,9 +138,8 @@ class SerializerYaml(SerializerFormat):
             is_key = True
             definition = ""
             key = ""
-            check = str()
             i = 0
-            temp_i = 0
+
             while i < len(str_obj):
                 if str_obj[i] == ' ' or str_obj[i] == '\t':
                     i += 1
@@ -215,12 +218,12 @@ class SerializerYaml(SerializerFormat):
 
         def loads_arr(str_obj, prev_tab_counter):
             obj = list()
-            brackets = 0
+
             definition = ""
             tab_counter = 0
             i = 0
             pos_min = True
-            temp_i = 0
+
             while i < len(str_obj):
                 if str_obj[i] == '\t':
                     tab_counter += 1
