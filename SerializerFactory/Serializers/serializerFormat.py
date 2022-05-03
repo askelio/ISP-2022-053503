@@ -5,20 +5,20 @@ class SerializerFormat(ABC):
 
     @staticmethod
     @abstractmethod
-    def dump():
+    def dump(obj, file):
         pass
 
     @staticmethod
     @abstractmethod
-    def dumps():
+    def dumps(obj) -> str:
         pass
 
     @staticmethod
     @abstractmethod
-    def load():
+    def load(obj: str) -> str:
         pass
 
     @staticmethod
     @abstractmethod
-    def loads():
+    def loads(file: str) -> str:
         pass
