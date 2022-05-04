@@ -1,24 +1,11 @@
 import types
 import builtins
-import importlib
+from accessify import protected
 
 
 class Serializer:
 
     # Function Serialization
-    @staticmethod
-    def serialize_function(obj):
-        result = {}
-        if isinstance(obj, types.FunctionType):
-            result["type"] = "function"
-            result["data"] = Serializer.serialize_func(obj)
-            return result
-
-        elif isinstance(obj, types.BuiltinFunctionType):
-            result["type"] = "builtinfunction"
-            result["data"] = Serializer.__serialize_builtinfunction(obj)
-            return result
-
     @staticmethod
     def serialize_func(obj):
         obj_dict = {}
@@ -36,16 +23,6 @@ class Serializer:
         return obj_dict
 
     @staticmethod
-    def __serialize_builtinfunction(obj):
-
-        obj_dict = {
-            "type": "builtinfunction",
-            "module": obj.__module__,
-            "attributes": {"__name__": obj.__name__}}
-
-        return obj_dict
-
-    @staticmethod
     def __get_closure_globs(obj, globs):
         if hasattr(obj, '__code__'):
             code_obj = obj.__code__
@@ -58,9 +35,8 @@ class Serializer:
                     globs[name] = getattr(builtins, name)
 
     # Function Deserialization
-
     @staticmethod
-    def unpack_function(obj_dict):
+    def deserialize_function(obj_dict):
         attrs = obj_dict["attributes"]
         obj = types.FunctionType(
             code=attrs["__code__"],
