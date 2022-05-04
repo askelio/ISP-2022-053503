@@ -1,4 +1,3 @@
-import re
 from SerializerFactory.Serializers.serializerFormat import SerializerFormat
 import yaml
 

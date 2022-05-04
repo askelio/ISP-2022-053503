@@ -5,7 +5,7 @@ class SerializerFormat(ABC):
 
     @staticmethod
     @abstractmethod
-    def dump(obj, file):
+    def dump(obj, file) -> str:
         pass
 
     @staticmethod

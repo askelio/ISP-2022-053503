@@ -1,6 +1,5 @@
 import types
 import builtins
-from accessify import protected
 
 
 class Serializer:

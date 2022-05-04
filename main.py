@@ -4,18 +4,24 @@ import math
 import inspect
 import types
 
+class A:
+    def t(self):
+        print("Hello")
 
-c = 42
-def fun(x):
-    a = 123
-    return math.sin(x * a * c)
+class B:
+    def __init__(self):
+        self.prt = A()
+
+class C:
+    def __init__(self):
+        self.Name = "name"
+        self.Age = 15
 
 
 def user_code():
-    a = Serializer.serialize_func(fun)
-    print(a)
-    b = Serializer.deserialize_function(a)
-    print(b(5))
+    b = A().__dict__
+
+    print(b)
 
 
 if __name__ == '__main__':
