@@ -14,7 +14,7 @@ def fun(x):
 def user_code():
     a = Serializer.serialize_func(fun)
     print(a)
-    b = Serializer.unpack_function(a)
+    b = Serializer.deserialize_function(a)
     print(b(5))
 
 
