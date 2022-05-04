@@ -1,11 +1,17 @@
 from SerializerFactory.factory import Factory
+from SerializerFactory.Serializers.serializer import Serializer
+from numpy import sin
 import json
+import yaml
+import toml
 import re
 
+def fun(n):
+    print("ddd")
 
 
 def user_code():
-    ser = Factory.create_serializer("json")
+    ser = Factory.create_serializer("toml")
 
     x = {
         "name": "John",
@@ -22,23 +28,15 @@ def user_code():
 
     fp = "/home/askelio/Desktop/BSUIR/ISP/LR_2/file"
 
-    with open(fp, "w") as f:
-        f.write(json.dumps(x))
+    # fun(10)
 
+    a = Serializer.serialize(fun)
 
+    b = Serializer.deserialize(a)
 
-    a = json.dumps(x)
-    b = ser.dumps(x)
-    print(b)
-    print(json.loads(b))
-    print(ser.loads(b))
+    print(a)
 
-    # c = ser.loads("Hello")
-    # print(c)
-
-
-
-
+    # print(b(5))
 
 
 if __name__ == '__main__':
