@@ -82,7 +82,6 @@ class SerializerJson(SerializerFormat):
             elif lc_obj == "null":
                 return None
 
-
         def loads_obj(str_obj):
             obj = dict()
             if str_obj[0] == "{" or str_obj[0] == "[":
@@ -192,7 +191,7 @@ class SerializerJson(SerializerFormat):
             quotes = 0
             definition = ""
             i = 0
-            temp_i = 0
+
             while i < len(str_obj):
                 if str_obj[i] != ' ':
                     if str_obj[i] == '[':
