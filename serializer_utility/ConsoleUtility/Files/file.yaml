@@ -1,0 +1,13 @@
+company: GeeksForGeeks
+id: 101
+modules:
+- numpy
+- simpy
+- math
+speed:
+- clock
+- '100'
+topics:
+  Algorithm: 2
+  Data Structure: 1
+  Gate Topics: 3

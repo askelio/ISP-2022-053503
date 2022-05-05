@@ -2,6 +2,7 @@ import argparse
 import pathlib
 from SerializerFactory.factory import Factory
 
+
 """
     Utility to convert serialized data from one format to another
     
@@ -27,12 +28,17 @@ def utility_code():
     destin = args.dst
     extens = args.ext
 
+    print("Source: " + source)
+    print("Destination: " + destin)
+    print("Convert extension " + extens)
+
     serializer = Factory.create_serializer(extens)
-    deserializer = Factory.create_serializer(pathlib.Path(source).suffix)
+    deserializer = Factory.create_serializer(pathlib.Path(source).suffix[1:])
 
     src_temp = deserializer.load(source)
 
     serializer.dump(src_temp, destin)
+
 
 if __name__ == "__main__":
     utility_code()

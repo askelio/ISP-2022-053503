@@ -1,5 +1,5 @@
 import re
-from SerializerFactory.Serializers.serializerFormat import SerializerFormat
+from serializer_utility.SerializerFactory.Serializers.serializerFormat import SerializerFormat
 
 FLOAT_REGEX = "-?[\d]+\.[\d]+"
 INT_REGEX = "^-?[\d]+$"

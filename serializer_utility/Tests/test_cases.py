@@ -1,6 +1,6 @@
 import unittest
-from SerializerFactory.factory import Factory
-from SerializerFactory.Serializers.serializer import Serializer
+from serializer_utility.SerializerFactory.factory import Factory
+from serializer_utility.SerializerFactory.Serializers.serializer import Serializer
 import test_suite as ts
 
 

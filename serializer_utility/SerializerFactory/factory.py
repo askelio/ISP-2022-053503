@@ -1,6 +1,6 @@
-from SerializerFactory.serializerYAML import SerializerYAML
-from SerializerFactory.serializerJSON import SerializerJSON
-from SerializerFactory.serializerTOML import SerializerTOML
+from serializer_utility.SerializerFactory.serializerYAML import SerializerYAML
+from serializer_utility.SerializerFactory.serializerJSON import SerializerJSON
+from serializer_utility.SerializerFactory.serializerTOML import SerializerTOML
 
 
 serializers = {

@@ -1,0 +1,10 @@
+[data]
+id = 101
+company = "GeeksForGeeks"
+speed = [ "clock", "100",]
+modules = [ "numpy", "simpy", "math",]
+
+[data.topics]
+"Data Structure" = 1
+Algorithm = 2
+"Gate Topics" = 3
