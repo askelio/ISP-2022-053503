@@ -81,15 +81,10 @@ class SerializerJson(SerializerFormat):
                 return False
             elif lc_obj == "null":
                 return None
-            else:
-                try:
-                    return int(lc_obj)
-                except ValueError:
-                    try:
-                        return float(lc_obj)
-                    except ValueError:
-                        raise ValueError
-
+            elif re.fullmatch(INT_REGEX, lc_obj):
+                return int(lc_obj)
+            elif re.fullmatch(FLOAT_REGEX, lc_obj):
+                return float(lc_obj)
 
         def loads_obj(str_obj):
             obj = dict()
