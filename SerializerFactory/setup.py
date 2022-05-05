@@ -5,5 +5,4 @@ setup(name='Serializer',
       description='Python Distribution Utilities',
       author='Alex Hryharovich',
       author_email='gogolyadza@gmail.com',
-      packages=['SerializerFactory', 'SerializerFactory.Serializers'],
-     )
+      packages=['SerializerFactory', 'SerializerFactory.Serializers'])

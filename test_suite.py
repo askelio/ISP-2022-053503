@@ -7,17 +7,17 @@ str_test = "microwave"
 bool_test = True
 
 # list/tuple
-list_test = ['one', 2, 'three']
-tuple_test = tuple(list_test)
+list_test = ['one', 'two']
+tuple_test = ('one', 'two')
 
 # dict
 dict_test = {
     "id": 101,
     "company": "GeeksForGeeks",
-    "topics": {"Data Structure",
-               "Algorithm",
-               "Gate Topics"},
-    "speed": ("clock", 100),
+    "topics": {"Data Structure": 1,
+               "Algorithm": 2,
+               "Gate Topics": 3},
+    "speed": ["clock", "100"],
     "modules": ["numpy", "simpy", "math"]
 }
 

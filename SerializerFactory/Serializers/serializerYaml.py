@@ -21,4 +21,4 @@ class SerializerYaml(SerializerFormat):
 
     @staticmethod
     def loads(obj):
-        return yaml.load(obj)
+        return yaml.load(obj, yaml.Loader)

@@ -6,7 +6,7 @@ class SerializerToml(SerializerFormat):
 
     @staticmethod
     def dumps(obj):
-        return toml.dumps(obj)
+        return toml.dumps({"data": obj})
 
     @staticmethod
     def dump(obj, file):
@@ -15,7 +15,7 @@ class SerializerToml(SerializerFormat):
 
     @staticmethod
     def loads(obj):
-        return toml.loads(obj)
+        return toml.loads(obj)["data"]
 
     @staticmethod
     def load(file):

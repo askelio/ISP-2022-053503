@@ -72,7 +72,7 @@ class SerializerJson(SerializerFormat):
     def loads(lc_obj):
         if len(lc_obj) == 0:
             return ""
-        if (": " and "{" and "[" and "]" and "}") not in lc_obj:
+        if (": " and "{" and "[" and "]" and "}" and ", ") not in lc_obj:
             if lc_obj[0] == "\"" and lc_obj[-1] == "\"":
                 return lc_obj[1:-1]
             elif lc_obj == "true":
@@ -81,11 +81,26 @@ class SerializerJson(SerializerFormat):
                 return False
             elif lc_obj == "null":
                 return None
+            else:
+                try:
+                    return int(lc_obj)
+                except ValueError:
+                    try:
+                        return float(lc_obj)
+                    except ValueError:
+                        raise ValueError
+
 
         def loads_obj(str_obj):
             obj = dict()
-            if str_obj[0] == "{" or str_obj[0] == "[":
+            # if str_obj[0] == "{" or str_obj[0] == "[":
+            #     str_obj = str_obj[1:len(str_obj) - 1]
+
+            if str_obj[0] == "{":
                 str_obj = str_obj[1:len(str_obj) - 1]
+            elif str_obj[0] == "[":
+                return load_arr(str_obj)
+
             brackets = 0
             braces = 0
             quotes = 0
