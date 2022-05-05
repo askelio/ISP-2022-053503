@@ -1,0 +1,3 @@
+[console_scripts]
+utility = ConsoleUtility.utility:utility_code
+
