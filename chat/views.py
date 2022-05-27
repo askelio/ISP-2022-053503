@@ -9,6 +9,15 @@ import django.contrib as djc
 
 from django.contrib.auth.decorators import login_required
 
+from django.http import JsonResponse
+
+from .serializers import user_serializer
+
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
+from django.contrib.auth.models import User
+
 # Create your views here.
 from .models import *
 from .forms import CreateUserForm
@@ -16,7 +25,7 @@ from .forms import CreateUserForm
 def index(request):
     return render(request, 'chat/index.html')
 
-
+@login_required
 def chat_page(request):
     return render(request, 'chat/chat_page.html')
 
@@ -66,3 +75,11 @@ def loginPage(request):
 def logoutUser(request):
 	logout(request)
 	return redirect('login')
+
+
+def user_request(request):
+	user = User.objects.get(id=2)
+	serialier = user_serializer(user, many = False)
+	return JsonResponse(serialier.data, safe=False)
+
+	
