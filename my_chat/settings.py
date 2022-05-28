@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'chat',
+    'channels',
     'rest_framework',
 ]
 
@@ -60,8 +61,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'my_chat.wsgi.application'
-
+#WSGI_APPLICATION = 'my_chat.wsgi.application'
+ASGI_APPLICATION = 'my_chat.asgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
@@ -131,3 +132,12 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CHANNEL_LAYES = {
+    'default':{
+        'BACKEND':'channels.layers.InMemoryChannelLayer',
+        # 'CONFIG':{
+        #     'hosts': [('127.0.0.1', 6379)],
+        # }
+    }
+}
