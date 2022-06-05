@@ -1,9 +1,12 @@
 
 import json
+import async_timeout
 from django.dispatch import receiver
 from django.shortcuts import render, redirect 
 
 from django.db.models import Q
+
+from asgiref.sync import sync_to_async
 
 
 from django.contrib.auth import authenticate, login, logout
@@ -28,6 +31,7 @@ from .models import *
 from .forms import CreateUserForm
 
 
+@sync_to_async
 def register_view(request):
 	if request.user.is_authenticated:  
 
@@ -48,6 +52,8 @@ def register_view(request):
 		context = {'form':form}
 		return render(request, 'chat/register.html', context)
 
+
+@sync_to_async
 def login_view(request):
 		if request.user.is_authenticated:
 			return redirect('chats')
@@ -70,24 +76,26 @@ def login_view(request):
 		context = {}
 		return render(request, 'chat/login.html', context)
 
+@sync_to_async
 def logout_view(request):
 	logout(request)
 	return redirect('login')
 
 
-
-
-
+@sync_to_async
 def index(request):
     return render(request, 'chat/index.html', {})
 
+
+@sync_to_async
 @login_required
 def delete_acc(request):
 	
 	User.objects.filter(username = request.user.username).exclude(is_staff = True).delete()	
 	return redirect('login')
-	
 
+
+@sync_to_async
 @login_required
 def search_view(request, parameter):
 	# return JsonResponse({"search":User.objects.filter(username = parameter)})	
@@ -96,6 +104,7 @@ def search_view(request, parameter):
 						{'users': User.objects.exclude(username = request.user.username).filter(username=parameter)})
 
 
+@sync_to_async
 @login_required
 def chat_view(request):
 	# a = Q(receiver = request.user.id )
@@ -107,6 +116,8 @@ def chat_view(request):
 	return render(request, 'chat/chat_page.html',
                       {'users': User.objects.exclude(username=request.user.username)})
 
+
+@sync_to_async
 @login_required
 def message_view(request, sender, receiver):
 	
@@ -124,6 +135,7 @@ def message_view(request, sender, receiver):
 								Message.objects.filter(sender_id=receiver, receiver_id=sender)})
 
 
+@sync_to_async
 @login_required
 @csrf_exempt
 def message_list(request, sender=None, receiver=None):
