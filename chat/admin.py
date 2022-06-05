@@ -2,9 +2,9 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Message,friend_request
+from .models import Message
 
 
 admin.site.register(Message)
-admin.site.register(friend_request)
+
 

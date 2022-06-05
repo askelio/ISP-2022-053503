@@ -15,26 +15,46 @@
     </head>
 	<!--Coded With Love By Mutiullah Samim-->
 	<body>
-        <a href="/logout">Logout</a>
+        
 
-    {% if user.is_authenticated %}        
-        <h1 style="text-align: end; padding-right: 10px">Logged in as : {{ user.username }}</h1>
-        <input type="hidden" id="logged-in-user" value="{{ user.id }}">
-    {% endif %}
+
 		<div class="container-fluid h-100">
 			<div class="row justify-content-center h-100 ">
 				<div class="col-md-4 col-xl-3 chat h-100 mt-4">
-                    <div class="card mb-sm-3 mb-md-0 contacts_card">
-					<div class="card-header">
-						<div class="input-group">
-							<input type="text" placeholder="Search..." name="" id = "search-message" class="form-control search">
-							<div class="input-group-prepend">
-								<span class="input-group-text search_btn"><i class="fas fa-search"></i></span>
-							</div>
+					<div class="logout__section" style="border-radius: 15px; 
+						background-color:lightgrey;
+						font-family: Georgia, sans-serif;
+						margin-bottom: 10px;
+						padding: 5px;">
+						{% if user.is_authenticated %}        
+							<h1 style="padding-right: 10px">Logged in as : {{ user.username }}</h1>
+						<input type="hidden" id="logged-in-user" value="{{ user.id }}">
+					{% endif %}
+						<div class="logout__delete" style="display: flex; justify-content: space-between;">
+							<a href="/logout" style="text-decoration: none;
+							padding: 3px 3px;
+							margin: 4px 3px;
+							border-radius: 5px;
+							background-color: aqua;">Logout</a>
+							<button class="delete-acc__btn" onclick="delete_acc()" style="border: none; background-color: aqua; cursor: pointer;
+							border-radius: 15px;">
+								Delete account
+								<img src ="{% static 'images/trash.png' %}" alt="bucket"
+								style="width: 30px; height: 30px">
+							</button>
 						</div>
 					</div>
+                    <div class="card mb-sm-3 mb-md-0 contacts_card" style="max-height: 78%">
+						<div class="card-header">
+							<div class="input-group">
+									<input type="text" placeholder="Search..." name="" id = "search-message" class="form-control search">
+								<div class="input-group-prepend">
+									<span class="input-group-text search_btn" onclick="search()"><i class="fas fa-search"></i></span>
+								</div>
+							</div>
+						</div>
 
-					<div class="card-body contacts_body">
+						<div class="card-body contacts_body">
                         
 							<div class="collection">								
 								{% for user in users %}							
@@ -54,11 +74,12 @@
 								{% endfor %}
 							</div>
 						                        
+						</div>
+
+
+						<div class="card-footer"></div>
 					</div>
-
-
-					<div class="card-footer"></div>
-				</div></div>
+				</div>
 				<div class="col-md-8 col-xl-6 chat h-100 mt-4">
 					<div class="card">
 							
@@ -98,6 +119,8 @@
 			// For receiving
 			sender_id = "{{ receiver.id }}";
 			receiver_id = "{{ request.user.id }}";
+
+			const messagesBlue = document.querySelectorAll('.justify-content-start');
 	
 			//For sending
 			$(function () {
@@ -113,25 +136,32 @@
 			})
 
 			//For searching
-			$(function () {
-				$('#input-group-prepend').on('text', function (event) {	
-					event.preventDefault();		
-					
-							
-					var message = $('#search-message');				
-					
-					send('{{ request.user.username }}', '{{ receiver.username }}', message.val());
-					
-					message.val('');
-				})
-			})
+			function search(){
+				event.preventDefault();
 
+				var parameter = $('#search-message');				
+					
+					search_user(parameter.val())
+					
+			}
 
+			
 			function scrolltoend() {
 				$('.msg_card_body').stop().animate({
 					scrollTop: $('.msg_card_body')[0].scrollHeight
 				}, 800);
 			}
+
+			function search_user(parameter){
+					console.log(parameter)
+					if(parameter.length == 0){
+						document.location.href = '/chat'
+					}else{
+						document.location.href = '/search/'+ parameter+'/';	
+					}			
+								
+			}
+
 
 			var text_box = '<div class="d-flex justify-content-end mb-4" style = margin-left:5%>'+
         		'<div class="msg_cotainer_send" style="background-color:limegreen";>'+           
@@ -177,10 +207,17 @@
 							scrolltoend();
 						}
 					}
-				})
-
+				})		
 				
 			}
+
+			function delete_acc() {
+					let deleteBul = confirm("Do you want to delete account?");
+					if(deleteBul){
+						document.location.href = '/delete'
+					}	
+				}
+			
 		</script>		
 
 	</body>
