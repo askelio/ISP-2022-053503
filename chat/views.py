@@ -78,29 +78,31 @@ def logout_view(request):
 	return redirect('login')
 
 
-def user_request(request):
-	user = User.objects.get(id=2)
-	serialier = user_serializer(user, many = False)
-	return JsonResponse(serialier.data, safe=False)
+
 
 
 def index(request):
     return render(request, 'chat/index.html', {})
 
+@login_required
+def search_view(request, parameter):
+	# return JsonResponse({"search":User.objects.filter(username = parameter)})	
+	return render(request, 'chat/chat_page.html',
+                      {'users': User.objects.exclude(username = request.user.username).filter(username=parameter)})
 
 
-# @login_required
+@login_required
 def chat_view(request):
-	a = Q(receiver = request.user.id )
-	b = Q(sender = request.user.id)
-	q = friend_request.objects.exclude(is_approved = 'False')
-	q = q.filter(a | b)
+	# a = Q(receiver = request.user.id )
+	# b = Q(sender = request.user.id)
+	# q = friend_request.objects.exclude(is_approved = 'False')
+	# q = q.filter(a | b)
 	
-	# print(q)
 
 	return render(request, 'chat/chat_page.html',
                       {'users': User.objects.exclude(username=request.user.username)})
 
+@login_required
 def message_view(request, sender, receiver):
 	
 
@@ -117,7 +119,7 @@ def message_view(request, sender, receiver):
 								Message.objects.filter(sender_id=receiver, receiver_id=sender)})
 
 
-
+@login_required
 @csrf_exempt
 def message_list(request, sender=None, receiver=None):
     """
