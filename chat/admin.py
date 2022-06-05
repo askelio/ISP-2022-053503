@@ -2,9 +2,9 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import *
+from .models import Message,friend_request
 
-admin.site.register(customer)
-admin.site.register(messages_channel)
-admin.site.register(messages)
+
+admin.site.register(Message)
+admin.site.register(friend_request)
 

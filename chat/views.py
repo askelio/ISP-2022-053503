@@ -1,7 +1,10 @@
+
+import json
+from django.dispatch import receiver
 from django.shortcuts import render, redirect 
-from django.http import HttpResponse
-from django.forms import inlineformset_factory
-from django.contrib.auth.forms import UserCreationForm
+
+from django.db.models import Q
+
 
 from django.contrib.auth import authenticate, login, logout
 
@@ -11,26 +14,24 @@ from django.contrib.auth.decorators import login_required
 
 from django.http import JsonResponse
 
-from .serializers import user_serializer
+from .serializers import user_serializer,message_serializer
 
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
+from django.views.decorators.csrf import csrf_exempt
 
 from django.contrib.auth.models import User
+
+from rest_framework.parsers import JSONParser
+
 
 # Create your views here.
 from .models import *
 from .forms import CreateUserForm
 
-def index(request):
-    return render(request, 'chat/index.html')
-
-# @login_required
-def chat_page(request):
-    return render(request, 'chat/chat_page.html')
 
 
-def registerPage(request):
+
+
+def register_view(request):
 	if request.user.is_authenticated:  
 
 		return redirect('login')
@@ -50,9 +51,9 @@ def registerPage(request):
 		context = {'form':form}
 		return render(request, 'chat/register.html', context)
 
-def loginPage(request):
+def login_view(request):
 	if request.user.is_authenticated:
-		return redirect('chat_page')
+		return redirect('chats')
 	else:
 		if request.method == 'POST':
 			username = request.POST.get('username')
@@ -62,7 +63,7 @@ def loginPage(request):
 
 			if user is not None:
 				login(request, user)
-				return redirect('chat_page')             
+				return redirect('chats')             
 
 			else:                
 				djc.messages.info(request, 'Username OR password is incorrect')
@@ -72,7 +73,7 @@ def loginPage(request):
 		context = {}
 		return render(request, 'chat/login.html', context)
 
-def logoutUser(request):
+def logout_view(request):
 	logout(request)
 	return redirect('login')
 
@@ -82,4 +83,58 @@ def user_request(request):
 	serialier = user_serializer(user, many = False)
 	return JsonResponse(serialier.data, safe=False)
 
+
+def index(request):
+    return render(request, 'chat/index.html', {})
+
+
+
+# @login_required
+def chat_view(request):
+	a = Q(receiver = request.user.id )
+	b = Q(sender = request.user.id)
+	q = friend_request.objects.exclude(is_approved = 'False')
+	q = q.filter(a | b)
 	
+	# print(q)
+
+	return render(request, 'chat/chat_page.html',
+                      {'users': User.objects.exclude(username=request.user.username)})
+
+def message_view(request, sender, receiver):
+	
+
+	if not request.user.is_authenticated:
+		return redirect('index')
+	if request.method == "GET":
+
+		
+		return render(request, "chat/messages.html",
+					{
+					'users': User.objects.exclude(username=request.user.username),
+					'receiver': User.objects.get(id=receiver),
+					'messages': Message.objects.filter(sender_id=sender, receiver_id=receiver) |
+								Message.objects.filter(sender_id=receiver, receiver_id=sender)})
+
+
+
+@csrf_exempt
+def message_list(request, sender=None, receiver=None):
+    """
+    List all required messages, or create a new message.
+    """
+    if request.method == 'GET':
+        messages = Message.objects.filter(sender_id=sender, receiver_id=receiver, is_read=False)
+        serializer = message_serializer(messages, many=True, context={'request': request})
+        for message in messages:
+            message.is_read = True
+            message.save()
+        return JsonResponse(serializer.data, safe=False)
+
+    elif request.method == 'POST':
+        data = JSONParser().parse(request)
+        serializer = message_serializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=201)
+        return JsonResponse(serializer.errors, status=400)

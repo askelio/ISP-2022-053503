@@ -1,78 +1,26 @@
-let input_message = $('#input-message')
-let message_body = $('.msg_card_body')
-let send_message_form = $('#send-message-form')
-
-
-
-let loc = window.location
-
-let wsStart = 'ws://'
-
-if(loc.protocol === 'https'){
-    wsStart = 'wss//'
-}
-
-
-let endpoint = wsStart + loc.host + loc.pathname
-
-var socket = new WebSocket("ws://127.0.0.1:8000/chat_page/")
-
-socket.onopen = async function(e){
-    console.log('open', e)
-    
-    send_message_form.on('submit',function(e){
-        e.preventDefault()
-        let message = input_message.val()
-        let data = {
-             'message':message
-        }
-    
-        data = JSON.stringify(data)
-        console.log(data)
-        socket.send(data)
-        $(this)[0].reset()
-    
+function send(sender, receiver, message) {
+    $.post('/api/messages/', '{"sender": "'+ sender +'", "receiver": "'+ receiver +'","message": "'+ message +'" }', function (data) {
+        console.log(data);
+        var box = text_box.replace('{sender}', "You");
+        box = box.replace('{message}', message);
+        $('#board').append(box);
+        scrolltoend();
     })
-    
 }
 
-socket.onmessage = async function(e){
-    console.log('message', e)
-    let data = JSON.parse(e.data)
-    let message =  data['message']
-
-    newMessage(message)
+function receive() {
+    $.get('/api/messages/'+ sender_id + '/' + receiver_id, function (data) {
+        console.log(data);
+        if (data.length !== 0)
+        {
+            for(var i=0;i<data.length;i++) {
+                console.log(data[i]);
+                var box = text_box.replace('{sender}', data[i].sender);
+                box = box.replace('{message}', data[i].message);
+                box = box.replace('right', 'left blue lighten-5');
+                $('#board').append(box);
+                scrolltoend();
+            }
+        }
+    })
 }
-
-socket.onerror = async function(e){
-    console.log('error', e)
-}
-
-socket.onclose = async function(e){
-    console.log('close', e)
-}
-
-
-
-function newMessage(message) {
-	if ($.trim(message) === '') {
-		return false;
-	}
-	
-	let message_element = `
-			<div class="d-flex mb-4 replied">
-				<div class="msg_cotainer_send">
-					${message}
-					<span class="msg_time_send">8:55 AM, Today</span>
-				</div>				
-			</div>
-	    `
-    // message_body.append("Geeeee")
-	message_body.append($(message_element))
-    message_body.animate({
-        scrollTop: $(document).height()
-    }, 100);
-	input_message.val(null);
-}
-
-
