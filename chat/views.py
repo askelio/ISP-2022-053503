@@ -1,13 +1,9 @@
 
-import json
-import async_timeout
-from django.dispatch import receiver
 from django.shortcuts import render, redirect 
 
-from django.db.models import Q
+
 
 from asgiref.sync import sync_to_async
-
 
 from django.contrib.auth import authenticate, login, logout
 
@@ -29,7 +25,6 @@ from rest_framework.parsers import JSONParser
 # Create your views here.
 from .models import *
 from .forms import CreateUserForm
-
 
 @sync_to_async
 def register_view(request):
@@ -93,6 +88,9 @@ def delete_acc(request):
 	
 	User.objects.filter(username = request.user.username).exclude(is_staff = True).delete()	
 	return redirect('login')
+
+	# User.objects.filter(username = request.get('username')).exclude(is_staff = True).delete()	
+	# return redirect('login')
 
 
 @sync_to_async

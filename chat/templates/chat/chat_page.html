@@ -11,7 +11,6 @@
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script>
 
         <link rel="stylesheet" href="{% static 'css/chat_page.css' %}">
-
     </head>
 	<!--Coded With Love By Mutiullah Samim-->
 	<body>
@@ -22,23 +21,25 @@
 			<div class="row justify-content-center h-100 ">
 				<div class="col-md-4 col-xl-3 chat h-100 mt-4">
 					<div class="logout__section" style="border-radius: 15px; 
-						background-color:lightgrey;
+						background-color: rgba(0, 0, 0, 0.4) !important;;
 						font-family: Georgia, sans-serif;
 						margin-bottom: 10px;
-						padding: 5px;">
+						padding: 10px 5px;">
 						{% if user.is_authenticated %}        
 							<h1 style="padding-right: 10px">Logged in as : {{ user.username }}</h1>
 						<input type="hidden" id="logged-in-user" value="{{ user.id }}">
 					{% endif %}
 						<div class="logout__delete" style="display: flex; justify-content: space-between;">
 							<a href="/logout" style="text-decoration: none;
-							padding: 3px 3px;
+							padding: 7px 10px;
 							margin: 4px 3px;
-							border-radius: 5px;
+							border-radius: 15px;
+							transition: 0.2s ease-in-out;
 							background-color: aqua;">Logout</a>
 							<button class="delete-acc__btn" onclick="delete_acc()" style="border: none; background-color: aqua; cursor: pointer;
 							border-radius: 15px;">
-								Delete account
+								<span style="margin-right: 7px; color: rgb(196, 93, 93); transition: 0.2s ease-in-out;"
+								onmouseover="this.style.color='red';" onmouseout="this.style.color='rgb(196, 93, 93)';">Delete account</span>
 								<img src ="{% static 'images/trash.png' %}" alt="bucket"
 								style="width: 30px; height: 30px">
 							</button>
@@ -60,7 +61,7 @@
 								{% for user in users %}							
 								<li style="list-style: none ;">									
 									<div class="d-flex bd-highlight">
-										<div class="img_cont">
+										<div class="img_cont" style="margin: 7px 5px;">
 											<img src="https://i.pinimg.com/originals/ac/b9/90/acb990190ca1ddbb9b20db303375bb58.jpg" class="rounded-circle user_img">
 											
 										</div>
@@ -181,8 +182,8 @@
 					box = box.replace('{message}', message);
 					
 					$('.msg_card_body').append(box);
-										
-					scrolltoend();			
+									
+					scrolltoend();					
 									
 				})
 					
@@ -204,14 +205,15 @@
 							
 							$('.msg_card_body').append(box);
 							
-							scrolltoend();
+						 	scrolltoend();
 						}
 					}
 				})		
 				
 			}
 
-			function delete_acc() {
+			function delete_acc() {					
+
 					let deleteBul = confirm("Do you want to delete account?");
 					if(deleteBul){
 						document.location.href = '/delete'
