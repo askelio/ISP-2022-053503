@@ -103,3 +103,40 @@
 2022-06-06 04:20:29,283 django.utils.autoreload INFO     Watching for file changes with StatReloader
 2022-06-06 04:20:31,643 django.utils.autoreload INFO     /home/askelio/Desktop/ISP/chat/views.py changed, reloading.
 2022-06-06 04:20:32,178 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2022-06-06 10:36:29,726 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2022-06-06 10:36:32,671 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 10:36:33,061 django.request WARNING  Not Found: /favicon.ico
+2022-06-06 10:36:34,273 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 10:36:34,448 chat.views   INFO     admin is authenticated
+2022-06-06 10:36:34,468 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 10:36:36,409 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 10:36:37,627 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 10:36:38,622 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 10:36:39,622 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 10:36:40,621 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 10:36:41,622 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 10:36:42,620 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 10:36:43,620 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 10:36:44,619 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 10:36:45,621 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 10:36:46,621 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 10:36:47,616 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 10:52:42,188 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2022-06-06 10:52:44,731 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 10:52:44,753 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 10:52:47,607 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 10:52:47,616 chat.views   INFO     admin is exit
+2022-06-06 10:52:47,640 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 10:52:49,161 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 10:52:49,332 chat.views   INFO     admin is authenticated
+2022-06-06 10:52:49,352 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 10:52:51,613 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 10:52:52,748 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 10:52:53,746 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 10:52:54,746 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 10:52:55,746 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 10:52:56,746 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 10:52:57,730 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 10:52:57,752 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 10:53:00,827 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 10:53:16,492 asyncio      DEBUG    Using selector: EpollSelector

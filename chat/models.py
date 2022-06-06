@@ -1,3 +1,5 @@
+from attr import field
+from django.contrib.postgres.indexes import GinIndex
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -12,6 +14,7 @@ class Message(models.Model):
         return self.message
 
     class Meta:
+        indexes = [GinIndex( fields=['sender','receiver', 'message', 'timestamp', 'is_read'] )]
         ordering = ('timestamp',)
 
 
