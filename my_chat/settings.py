@@ -1,4 +1,4 @@
-
+import dj_database_url
 
 import os
 from pathlib import Path
@@ -79,16 +79,30 @@ WSGI_APPLICATION = 'my_chat.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "postgres",
+#         "USER": "postgres",
+#         "PASSWORD": "postgres",
+#         "HOST": "db",  # set in docker-compose.yml
+#         "PORT": 5432,  # default postgres port
+#     }
+# }
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "postgres",
-        "USER": "postgres",
-        "PASSWORD": "postgres",
-        "HOST": "db",  # set in docker-compose.yml
+        "USER": "fcbcxhgtntcufa",
+        "PASSWORD": "88e5a414b85f7af227b51ca323357c136896478303ef8cfcdef2bca9e1a60618",
+        "HOST": "ec2-3-226-163-72.compute-1.amazonaws.com",  # set in docker-compose.yml
         "PORT": 5432,  # default postgres port
     }
 }
+
+# db_from_env = dj_database_url.config(conn_max_age=600)
+# DATABASES['default'].update(db_from_env)
 
 
 # Password validation
