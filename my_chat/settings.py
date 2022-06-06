@@ -20,7 +20,7 @@ DEBUG = False
 
 # ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
-ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1','localhost','clehttps://isp-simple-chat.herokuapp.com/']
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1','localhost','https://isp-simple-chat.herokuapp.com/']
 
 
 # Application definition
