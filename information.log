@@ -140,3 +140,167 @@
 2022-06-06 10:52:57,752 asyncio      DEBUG    Using selector: EpollSelector
 2022-06-06 10:53:00,827 asyncio      DEBUG    Using selector: EpollSelector
 2022-06-06 10:53:16,492 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:14:54,834 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2022-06-06 12:18:47,120 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2022-06-06 12:34:06,416 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2022-06-06 12:34:08,413 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:34:08,428 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:34:10,495 django.request WARNING  Not Found: /logout/
+2022-06-06 12:34:12,794 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:34:43,150 django.utils.autoreload INFO     /home/askelio/Desktop/ISP/chat/urls.py changed, reloading.
+2022-06-06 12:34:43,483 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2022-06-06 12:34:44,177 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:34:44,181 chat.views   INFO     admin is exit
+2022-06-06 12:34:44,200 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:34:44,235 django.request ERROR    Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/askelio/Desktop/ISP/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/askelio/Desktop/ISP/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/askelio/Desktop/ISP/venv/lib/python3.8/site-packages/asgiref/sync.py", line 218, in __call__
+    return call_result.result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 437, in result
+    return self.__get_result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 389, in __get_result
+    raise self._exception
+  File "/home/askelio/Desktop/ISP/venv/lib/python3.8/site-packages/asgiref/sync.py", line 284, in main_wrap
+    result = await self.awaitable(*args, **kwargs)
+  File "/home/askelio/Desktop/ISP/venv/lib/python3.8/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.8/asyncio/tasks.py", line 455, in wait_for
+    return await fut
+  File "/home/askelio/Desktop/ISP/venv/lib/python3.8/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/askelio/Desktop/ISP/venv/lib/python3.8/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/askelio/Desktop/ISP/accounts/views.py", line 63, in login_view
+    return render(request, 'accounts/login.html', context)
+  File "/home/askelio/Desktop/ISP/venv/lib/python3.8/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/askelio/Desktop/ISP/venv/lib/python3.8/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/askelio/Desktop/ISP/venv/lib/python3.8/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: accounts/login.html
+2022-06-06 12:34:46,383 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:34:46,419 django.request ERROR    Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/askelio/Desktop/ISP/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/askelio/Desktop/ISP/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/askelio/Desktop/ISP/venv/lib/python3.8/site-packages/asgiref/sync.py", line 218, in __call__
+    return call_result.result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 437, in result
+    return self.__get_result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 389, in __get_result
+    raise self._exception
+  File "/home/askelio/Desktop/ISP/venv/lib/python3.8/site-packages/asgiref/sync.py", line 284, in main_wrap
+    result = await self.awaitable(*args, **kwargs)
+  File "/home/askelio/Desktop/ISP/venv/lib/python3.8/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.8/asyncio/tasks.py", line 455, in wait_for
+    return await fut
+  File "/home/askelio/Desktop/ISP/venv/lib/python3.8/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/askelio/Desktop/ISP/venv/lib/python3.8/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/askelio/Desktop/ISP/accounts/views.py", line 63, in login_view
+    return render(request, 'accounts/login.html', context)
+  File "/home/askelio/Desktop/ISP/venv/lib/python3.8/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/askelio/Desktop/ISP/venv/lib/python3.8/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/askelio/Desktop/ISP/venv/lib/python3.8/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: accounts/login.html
+2022-06-06 12:35:12,794 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:35:12,813 django.request WARNING  Not Found: /accounts/login/
+2022-06-06 12:36:12,794 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:36:12,809 django.request WARNING  Not Found: /accounts/login/
+2022-06-06 12:36:31,360 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2022-06-06 12:36:32,956 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:36:36,392 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:36:36,501 accounts.views INFO     admin is authenticated
+2022-06-06 12:36:36,515 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:36:38,764 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:36:38,770 chat.views   INFO     admin is exit
+2022-06-06 12:36:38,787 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:36:43,513 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:36:57,658 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:36:57,757 accounts.views INFO     Account was created for ccc
+2022-06-06 12:36:57,765 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:37:03,850 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:37:03,958 accounts.views INFO     ccc is authenticated
+2022-06-06 12:37:03,972 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:37:06,281 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:37:06,286 chat.views   INFO     ccc is exit
+2022-06-06 12:37:06,299 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:37:12,794 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:37:12,809 django.request WARNING  Not Found: /accounts/login/
+2022-06-06 12:37:23,384 django.utils.autoreload INFO     /home/askelio/Desktop/ISP/chat/urls.py changed, reloading.
+2022-06-06 12:37:23,718 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2022-06-06 12:37:25,254 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:37:30,540 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:37:30,644 accounts.views INFO     ccc is authenticated
+2022-06-06 12:37:30,656 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:37:33,643 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:37:33,649 chat.views   INFO     ccc is exit
+2022-06-06 12:37:33,665 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:37:50,337 django.utils.autoreload INFO     /home/askelio/Desktop/ISP/chat/views.py changed, reloading.
+2022-06-06 12:37:50,691 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2022-06-06 12:37:54,273 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:37:59,391 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:37:59,498 accounts.views INFO     ccc is authenticated
+2022-06-06 12:37:59,511 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:01,500 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:02,591 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:02,984 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:04,021 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:05,106 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:06,103 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:07,105 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:07,842 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:08,104 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:09,104 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:09,612 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:09,616 chat.views   INFO     ccc is exit
+2022-06-06 12:38:09,632 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:12,796 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:12,817 django.request WARNING  Not Found: /accounts/login/
+2022-06-06 12:38:14,583 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:14,693 accounts.views INFO     aaa is authenticated
+2022-06-06 12:38:14,706 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:16,416 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:17,518 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:18,513 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:19,515 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:20,485 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:21,610 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:22,609 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:23,652 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:24,609 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:25,609 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:26,608 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:27,609 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:28,608 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:29,610 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:30,609 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:31,609 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:32,610 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:33,608 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:34,609 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:35,608 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:36,608 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:37,609 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:38,609 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:39,609 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:40,610 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:41,609 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:42,609 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:43,636 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:44,606 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:45,609 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:46,607 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 12:38:47,609 asyncio      DEBUG    Using selector: EpollSelector
