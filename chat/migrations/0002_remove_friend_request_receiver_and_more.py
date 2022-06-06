@@ -3,6 +3,7 @@
 import django.contrib.postgres.indexes
 from django.db import migrations
 
+from django.contrib.postgres.operations import BtreeGinExtension
 
 class Migration(migrations.Migration):
 
@@ -11,6 +12,8 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        BtreeGinExtension(),
+
         migrations.RemoveField(
             model_name='friend_request',
             name='receiver',
