@@ -21,6 +21,8 @@ from django.contrib.auth.models import User
 
 from rest_framework.parsers import JSONParser
 
+import logging
+logger = logging.getLogger(__name__)
 
 # Create your views here.
 from .models import *
@@ -29,7 +31,6 @@ from .forms import CreateUserForm
 @sync_to_async
 def register_view(request):
 	if request.user.is_authenticated:  
-
 		return redirect('login')
 	else:
 		form = CreateUserForm()
@@ -39,6 +40,9 @@ def register_view(request):
 				form.save()
 				user = form.cleaned_data.get('username')
 				djc.messages.success(request, 'Account was created for ' + user)
+
+				logger.info(f'Account was created for {user}')
+
 				return redirect('login')
         
 
@@ -61,6 +65,9 @@ def login_view(request):
 
 				if user is not None:
 					login(request, user)
+
+					logger.info(f'{user} is authenticated')
+
 					return redirect('chats')             
 
 				else:                
@@ -73,6 +80,9 @@ def login_view(request):
 
 @sync_to_async
 def logout_view(request):
+
+	logger.info(f'{request.user.username} is exit')
+
 	logout(request)
 	return redirect('login')
 
@@ -85,8 +95,11 @@ def index(request):
 @sync_to_async
 @login_required
 def delete_acc(request):
-	
+	temp = request.user.username
 	User.objects.filter(username = request.user.username).exclude(is_staff = True).delete()	
+
+	logger.info(f'{temp} account is deleted')
+
 	return redirect('login')
 
 	# User.objects.filter(username = request.get('username')).exclude(is_staff = True).delete()	
