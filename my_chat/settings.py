@@ -93,7 +93,7 @@ WSGI_APPLICATION = 'my_chat.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "postgres",
+        "NAME": "dc28sjjk6gm6j4",
         "USER": "fcbcxhgtntcufa",
         "PASSWORD": "88e5a414b85f7af227b51ca323357c136896478303ef8cfcdef2bca9e1a60618",
         "HOST": "ec2-3-226-163-72.compute-1.amazonaws.com",  # set in docker-compose.yml
