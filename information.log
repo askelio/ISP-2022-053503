@@ -1819,3 +1819,29 @@ LINE 1: ...ession_data", "django_session"."expire_date" FROM "django_se...
 2022-06-06 15:47:38,899 asyncio      DEBUG    Using selector: EpollSelector
 2022-06-06 15:47:39,900 asyncio      DEBUG    Using selector: EpollSelector
 2022-06-06 15:47:40,898 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 18:10:52,528 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2022-06-06 18:11:02,581 django.security.DisallowedHost ERROR    Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+2022-06-06 18:11:02,634 django.request WARNING  Bad Request: /
+2022-06-06 18:11:23,601 django.utils.autoreload INFO     /code/my_chat/settings.py changed, reloading.
+2022-06-06 18:11:24,850 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2022-06-06 18:11:28,996 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 18:11:31,599 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 18:11:31,809 accounts.views INFO     admin is authenticated
+2022-06-06 18:11:31,830 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 18:11:34,661 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 18:11:36,055 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 18:11:37,052 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 18:11:37,092 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 18:11:38,498 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 18:11:39,495 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 18:11:39,967 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 18:11:39,986 chat.views   INFO     admin is exit
+2022-06-06 18:11:40,006 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-06 18:27:15,570 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2022-06-06 18:27:49,242 django.utils.autoreload INFO     /home/askelio/Desktop/ISP/my_chat/urls.py changed, reloading.
+2022-06-06 18:27:49,688 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2022-06-06 18:27:53,583 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2022-06-06 18:28:02,854 django.utils.autoreload INFO     /home/askelio/Desktop/ISP/my_chat/urls.py changed, reloading.
+2022-06-06 18:28:03,444 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2022-06-06 18:28:05,731 django.utils.autoreload INFO     /home/askelio/Desktop/ISP/my_chat/urls.py changed, reloading.
+2022-06-06 18:28:06,164 django.utils.autoreload INFO     Watching for file changes with StatReloader
