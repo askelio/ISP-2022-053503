@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from celery import shared_task
 from django.core.mail import send_mail
 from django.dispatch import receiver
-from my_chat.settings import EMAIL_HOST_USER
+from my_chat.settings.dev_settings import EMAIL_HOST_USER
 from .models import *
 import datetime
 

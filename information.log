@@ -1,1 +1,121 @@
 2022-06-06 18:50:27,704 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2022-06-07 11:11:04,677 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2022-06-07 11:11:14,261 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2022-06-07 11:11:24,896 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-07 11:11:24,963 django.request ERROR    Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/sessions/backends/base.py", line 187, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: django_session
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 218, in __call__
+    return call_result.result()
+  File "/usr/local/lib/python3.10/concurrent/futures/_base.py", line 439, in result
+    return self.__get_result()
+  File "/usr/local/lib/python3.10/concurrent/futures/_base.py", line 391, in __get_result
+    raise self._exception
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 284, in main_wrap
+    result = await self.awaitable(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/code/accounts/views.py", line 41, in login_view
+    if request.user.is_authenticated:
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 258, in inner
+    self._setup()
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 398, in _setup
+    self._wrapped = self._setupfunc()
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/middleware.py", line 25, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/middleware.py", line 11, in get_user
+    request._cached_user = auth.get_user(request)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/__init__.py", line 191, in get_user
+    user_id = _get_user_session_key(request)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/__init__.py", line 60, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/sessions/backends/base.py", line 53, in __getitem__
+    return self._session[key]
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/sessions/backends/base.py", line 192, in _get_session
+    self._session_cache = self.load()
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/sessions/backends/db.py", line 42, in load
+    s = self._get_session_from_db()
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/sessions/backends/db.py", line 32, in _get_session_from_db
+    return self.model.objects.get(
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 492, in get
+    num = len(clone)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 302, in __len__
+    self._fetch_all()
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 1507, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 57, in __iter__
+    results = compiler.execute_sql(
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1361, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/usr/local/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/usr/local/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: django_session
+2022-06-07 11:11:25,212 django.request WARNING  Not Found: /favicon.ico
+2022-06-07 11:12:59,760 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2022-06-07 11:13:08,339 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-07 11:13:08,370 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-07 11:13:19,392 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-07 11:13:19,403 chat.views   INFO     admin is exit
+2022-06-07 11:13:19,419 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-07 11:13:24,814 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-07 11:13:26,839 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-07 11:13:30,942 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-07 11:13:31,064 accounts.views INFO     aaa is authenticated
+2022-06-07 11:13:31,077 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-07 11:15:28,342 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2022-06-07 11:15:33,072 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-07 11:15:33,094 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-07 11:16:14,326 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2022-06-07 11:16:17,076 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-07 11:16:17,429 django.request WARNING  Not Found: /favicon.ico
+2022-06-07 11:16:18,618 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-07 11:16:18,737 accounts.views INFO     admin is authenticated
+2022-06-07 11:16:18,750 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-07 11:18:05,466 django.utils.autoreload INFO     /code/my_chat/settings/dev_settings.py changed, reloading.
+2022-06-07 11:18:06,258 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2022-06-07 11:18:54,439 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2022-06-07 11:20:53,521 django.utils.autoreload INFO     /code/my_chat/settings/dev_settings.py changed, reloading.
+2022-06-07 11:20:54,225 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2022-06-07 11:21:08,647 django.utils.autoreload INFO     /code/my_chat/settings/dev_settings.py changed, reloading.
+2022-06-07 11:21:32,135 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2022-06-07 11:21:42,800 asyncio      DEBUG    Using selector: EpollSelector
+2022-06-07 11:21:42,820 asyncio      DEBUG    Using selector: EpollSelector
